@@ -1,0 +1,80 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/product.css">
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+
+            <main>
+                <% if (errorMessage) { %>
+                    <div class="user-message user-message--error">
+                        <%= errorMessage %>
+                    </div>
+                    <% } %>
+                    <!-- enctype="multipart/form-data" means that this form contains files and text -->
+                        <form class="product-form"
+                            action="/admin/<% if (editing) { %>edit-product<% } else { %>add-product<% } %>"
+                            method="POST"
+                            enctype="multipart/form-data"
+                            >
+                            <div class="form-control">
+                                <label for="title">Title</label>
+                                <!-- 'find' is a fn you can call on an array,
+                                'invalid is a CSS class' -->
+                                <input
+                                    class="<%= validationErrors.find(err => err.param === 'title') ? 'invalid' : '' %>"
+                                    type="text" name="title" id="title"
+                                    value="<% if (editing || hasError ) { %><%= product.title %><% } %>">
+                            </div>
+                            <div class="form-control">
+                                <label for="myImage">Image(How to upload an imageUrl was commented out, see page
+                                    source)</label>
+                                <input type="file" name="myImage" id="myImage">
+                            </div>
+                            <!-- 
+                        /THIS CODE SHOWS HOW UPLOAD AN IMAGE URL BEFORE IT WAS NOW CHANGED TO FILR UPLOAD ABOVE
+                        <div class="form-control">
+                        <label for="imageUrl">Image URL</label>
+                       ///'find' is a fn you can call on an array,
+                        'invalid is a CSS class'////
+                                <input
+                                class="<%= validationErrors.find(err => err.param === 'imageUrl') ? 'invalid' : '' %>"
+                                type="text" 
+                                name="imageUrl" 
+                                id="imageUrl"
+                                value="<% if (editing || hasError) { %><%= product.imageUrl %><% } %>">
+                    </div> -->
+                            <div class="form-control">
+                                <label for="price">Price</label>
+                                <!-- 'find' is a fn you can call on an array,
+                                'invalid is a CSS class' -->
+                                <input
+                                    class="<%= validationErrors.find(err => err.param === 'price') ? 'invalid' : '' %>"
+                                    type="number" name="price" id="price" step="0.01"
+                                    value="<% if (editing || hasError) { %><%= product.price %><% } %>">
+                            </div>
+                            <div class="form-control">
+                                <label for="description">Description</label>
+                                <!-- 'find' is a fn you can call on an array,
+                            'invalid is a CSS class' -->
+                                <textarea
+                                    class="<%= validationErrors.find(err => err.param === 'description') ? 'invalid' : '' %>"
+                                    name="description" id="description"
+                                    rows="5"><% if (editing || hasError) { %><%= product.description %><% } %></textarea>
+                            </div>
+                            <% if (editing) { %>
+                                <!-- this input tag acts as a body when this form is submitted,
+                it will be read like this 'req.body.productId', we made it hidden because we only,
+                want to use it as a body -->
+                                <input type="hidden" value="<%= product._id %>" name="productId">
+                                <% } %>
+                                    <!-- this is where we passed our CSRF token that is needed in the server, to make sure that the reqest coming
+                    to it was made from our view, name has to be _csrf, because CSRF middleware we added will look for this name to access the Session, behind the scene -->
+                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                    <button class="btn" type="submit">
+                                        <% if (editing) { %>Update Product<% } else { %>Add Product<% } %>
+                                    </button>
+                        </form>
+            </main>
+            <%- include('../includes/end.ejs') %>

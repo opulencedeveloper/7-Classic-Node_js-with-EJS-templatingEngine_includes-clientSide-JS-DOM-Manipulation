@@ -1,0 +1,17 @@
+<section class="pagination">
+    <!-- this is a query parameter ..
+    removeing '/' at the begining of the url means that this gets appended to whatever the current path is-->
+    <% if(currentPage !== 1 && previousPage !== 1) { %> 
+        <a href="?page=1">1</a> 
+    <% } %> 
+    <% if (hasPreviousPage) { %>
+        <a href="?page=<%= previousPage %>"><%= previousPage %></a>
+    <% } %>
+    <a href="?page=<%= currentPage %>" class="active"><%= currentPage %></a>   
+    <% if (hasNextPage) { %>
+        <a href="?page=<%= nextPage %>"><%= nextPage %></a>
+    <% } %>
+    <% if (lastPage !== currentPage && nextPage !== lastPage) { %>
+        <a href="?page=<%= lastPage %>"><%= lastPage %></a>
+    <% } %>
+</section>

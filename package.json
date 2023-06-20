@@ -1,0 +1,38 @@
+{
+  "name": "node-js-templating-engine-with-ejs",
+  "version": "1.0.0",
+  "description": "Node with Express",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=production MONGO_USER=opulence MONGO_PASSWORD=89k4blljMBc8k2qca MONGO_DEFAULT_DATABASE=myshop STRIPE_KEY=PASS-YOUR-STRIPE-TESTING-KEY-HERE node app.js",
+    "start-dev": "nodemon app.js"
+  },
+  "author": "Opulence Developer",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express-handlebars": "^6.0.0",
+    "nodemon": "^2.0.22"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "compression": "^1.7.4",
+    "connect-flash": "^0.1.1",
+    "connect-mongodb-session": "^3.1.1",
+    "csurf": "^1.11.0",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "express-validator": "^6.15.0",
+    "helmet": "^6.1.5",
+    "mongodb": "^5.2.0",
+    "mongoose": "^7.0.3",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.1",
+    "nodemailer-sendgrid-transport": "^0.2.0",
+    "pdfkit": "^0.13.0",
+    "stripe": "^12.1.1"
+  }
+}

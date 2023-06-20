@@ -1,0 +1,10 @@
+<form action="/cart" method="post">
+    <!-- this is where we passed our CSRF token that is needed in the server, to make sure that the reqest coming
+    to it was made from our view, name has to be _csrf, because CSRF middleware we added will look for this name to access the Session, behind the scene -->
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <button class="btn" type="submit">Add to Cart</button>
+    <!-- on the server this input will read as an obj, {productId: product.id} 
+    it is like the body of this request, so read it as req.body.productId
+    -->
+    <input type="hidden" name="productId" value="<%= product._id %>">
+</form>
