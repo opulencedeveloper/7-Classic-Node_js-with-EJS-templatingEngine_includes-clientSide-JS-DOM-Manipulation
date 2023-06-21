@@ -15,8 +15,6 @@
                         <form class="login-form" action="/login" method="POST">
                             <div class="form-control">
                                 <label for="email">E-Mail</label>
-                                <!-- 'find' is a fn you can call on an array,
-                                'invalid is a CSS class' -->
                                 <input
                                 class="<%= validationErrors.find(err => err.param === 'email') ? 'invalid' : '' %>"
                                    type="email" 
@@ -26,8 +24,6 @@
                             </div>
                             <div class="form-control">
                                 <label for="password">Password</label>
-                                <!-- 'find' is a fn you can call on an array,
-                                'invalid is a CSS class' -->
                                 <input
                                 class="<%= validationErrors.find(err => err.param === 'password') ? 'invalid' : '' %>"
                                    type="password" 
@@ -35,8 +31,6 @@
                                    id="password" 
                                    value="<%= oldUserInput.password %>">
                             </div>
-                            <!-- this is where we passed our CSRF token that is needed in the server, to make sure that the reqest coming
-                    to it was made from our view, name has to be _csrf, because CSRF middleware we added will look for this name to access the Session, behind the scene -->
                             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                             <button class="btn" type="submit">Login</button>
                         </form>

@@ -37,8 +37,6 @@
             <% } else { %>
                 <li class="main-header__item">
                     <form action="/logout" method="post">
-                         <!-- this is where we passed our CSRF token that is needed in the server, to make sure that the reqest coming
-                    to it was made from our view, name has to be _csrf, because CSRF middleware we added will look for this name to access the Session, behind the scene -->
                         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                         <button type="submit">Logout</button>
                     </form>
@@ -82,8 +80,6 @@
         <% } else { %>
             <li class="mobile-nav__item">
                 <form action="/logout" method="post">
-                    <!-- this is where we passed our CSRF token that is needed in the server, to make sure that the reqest coming
-                    to it was made from our view, name has to be _csrf, because CSRF middleware we added will look for this name to access the Session, behind the scene -->
                     <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                     <button type="submit">Logout</button>
                 </form>

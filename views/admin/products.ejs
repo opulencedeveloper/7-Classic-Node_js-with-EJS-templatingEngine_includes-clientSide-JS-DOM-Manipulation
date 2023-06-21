@@ -28,20 +28,13 @@
                                 </div>
                                 <div class="card__actions">
                                     <a href="/admin/edit-product/<%= product._id %>?edit=true" class="btn">Edit</a>
-                                    
-                                    <!-- <form action="/admin/delete-product" method="POST"> -->
 
-                                        <!-- this input tag acts as a body when this form is submitted,
-                                        it will be read like this 'req.body.productId', we made it hidden because we only,
-                                        want to use it as a body -->
-                                        <input type="hidden" value="<%= product._id %>" name="productId">
-                                        <!-- this is where we passed our CSRF token that is needed in the server, to make sure that the reqest coming
-                                        to it was made from our view, name has to be _csrf, because CSRF middleware we added will look for this name to access the Session, behind the scene -->
-                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                                        <!-- this refers to this button -->
-                                        <button class="btn" type="button" onclick="deleteProduct(this)">Delete</button>
 
-                                    <!-- </form> -->
+                                    <input type="hidden" value="<%= product._id %>" name="productId">
+                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                    <button class="btn" type="button" onclick="deleteProduct(this)">Delete</button>
+
+
 
                                 </div>
                             </article>
@@ -52,4 +45,4 @@
                         <% } %>
             </main>
             <%- include('../includes/end.ejs') %>
-            <script src="/js/admin.js"></script>
+                <script src="/js/admin.js"></script>

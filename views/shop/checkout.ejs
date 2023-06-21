@@ -24,11 +24,7 @@
                     var stripe = Stripe('PASS-YOUR-STRIPE-PUBLIC-KEY-HERE');
                     var orderBtn = document.getElementById('order-btn');
                     orderBtn.addEventListener('click', function() {
-                        // this redirects the user to Stripe check out page,
-                        //after user enters payment details, and click pay, thw payment is processed
-                        //and the user is redirected by to us
                         stripe.redirectToCheckout({
-                            //this sessionId is coming from Stripe
                             sessionId: '<%= stripeSessionId %>'
                         });
                     });

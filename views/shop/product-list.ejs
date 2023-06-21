@@ -28,9 +28,6 @@
                                 </div>
                                 <div class="card__actions">
                                     <a href="/products/<%= product._id %>" class="btn">Details</a>
-                                     <!-- if you have an 'include' in a for-loop, the data it needs 
-                                    won't be passed in by default you have to pass it in by yourself, because the 
-                                    data in the for-loop is only available in the loop, not globally -->
                                     <% if(isAuthenticated) { %>
                                     <%- include('../includes/add-to-cart.ejs', {product: product}) %>
                                     <% } %>
@@ -38,7 +35,6 @@
                             </article>
                             <% } %>
                     </div>
-                    <!-- since data is not forwarded by default in ejs in a for-loop, we forward it here on our own -->
                     <%- include('../includes/pagination.ejs', {currentPage: currentPage, nextPage: nextPage, previousPage: previousPage, lastPage: lastPage, hasNextPage: hasNextPage, hasPreviousPage: hasPreviousPage}) %>
                     <% } else { %>
                         <h1>No Products Found!</h1>
